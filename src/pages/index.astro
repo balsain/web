@@ -2,9 +2,12 @@
 import Layout from '../layouts/Layout.astro';
 import Home from '../components/Home.astro';
 
+import Analytics from '@vercel/analytics/astro'
+
 const locale = Astro.currentLocale;
 ---
 
 <Layout locale={locale}>
+	<Analytics/>
 	<Home locale={locale} />
 </Layout>
