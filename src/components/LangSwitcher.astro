@@ -1,0 +1,55 @@
+---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { t } from '../i18n/messages';
+
+interface Props {
+	locale: string | undefined;
+}
+
+const { locale } = Astro.props;
+const copy = t(locale);
+const current = locale === 'es' ? 'es' : 'en';
+const enHref = getRelativeLocaleUrl('en', '');
+const esHref = getRelativeLocaleUrl('es', '');
+---
+
+<nav class="lang" aria-label={copy.langLabel}>
+	<a href={enHref} hreflang="en" lang="en" class:list={['lang__link', { 'is-current': current === 'en' }]}>
+		EN
+	</a>
+	<span class="lang__sep" aria-hidden="true">/</span>
+	<a href={esHref} hreflang="es" lang="es" class:list={['lang__link', { 'is-current': current === 'es' }]}>
+		ES
+	</a>
+</nav>
+
+<style>
+	.lang {
+		display: flex;
+		align-items: center;
+		gap: 0.35rem;
+		font-size: 0.8125rem;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+	}
+
+	.lang__sep {
+		opacity: 0.35;
+		user-select: none;
+	}
+
+	.lang__link {
+		color: var(--fg-muted);
+		text-decoration: none;
+		transition: color 0.15s ease;
+	}
+
+	.lang__link:hover {
+		color: var(--fg);
+	}
+
+	.lang__link.is-current {
+		color: var(--fg);
+		font-weight: 500;
+	}
+</style>

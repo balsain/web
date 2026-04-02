@@ -1,0 +1,136 @@
+---
+import { almena, t } from '../i18n/messages';
+
+interface Props {
+	locale: string | undefined;
+}
+
+const { locale } = Astro.props;
+const copy = t(locale);
+---
+
+<main id="main">
+	<p class="tagline">{copy.tagline}</p>
+
+	<div class="body-stack">
+		<p>{copy.lede}</p>
+
+		<section class="product" aria-labelledby="product-heading">
+			<h2 id="product-heading" class="focus__title">{copy.productTitle}</h2>
+			<p class="product__text">
+				{copy.productBefore}
+				<a
+					class="product__link"
+					href={almena.url}
+					rel="noopener noreferrer"
+					target="_blank"
+				>
+					{almena.name}
+				</a>
+				{copy.productAfter}
+			</p>
+		</section>
+
+		<section class="focus" aria-labelledby="focus-heading">
+			<h2 id="focus-heading" class="focus__title">{copy.focusTitle}</h2>
+			<ul class="focus__list">
+				{copy.focus.map((item) => <li>{item}</li>)}
+			</ul>
+		</section>
+
+		<p class="contact">
+			<a class="contact__link" href={copy.contactHref}>{copy.contact}</a>
+		</p>
+	</div>
+</main>
+
+<style>
+	.tagline {
+		font-family: var(--font-serif);
+		font-size: clamp(1.35rem, 2.8vw, 1.75rem);
+		font-weight: 400;
+		line-height: 1.35;
+		letter-spacing: -0.018em;
+		margin: 0 0 2rem;
+		max-width: var(--measure);
+	}
+
+	.body-stack {
+		max-width: var(--measure);
+		display: flex;
+		flex-direction: column;
+		gap: 1.75rem;
+	}
+
+	.body-stack > p {
+		margin: 0;
+		color: var(--fg-muted);
+	}
+
+	.product__text {
+		margin: 0;
+		color: var(--fg-muted);
+	}
+
+	.product__link {
+		color: var(--fg);
+		font-weight: 500;
+		text-decoration: none;
+		border-bottom: 1px solid var(--fg);
+		padding-bottom: 0.1em;
+		transition:
+			opacity 0.15s ease,
+			border-color 0.15s ease;
+	}
+
+	.product__link:hover {
+		opacity: 0.65;
+		border-color: transparent;
+	}
+
+	.focus__title {
+		font-family: var(--font-sans);
+		font-size: 0.75rem;
+		font-weight: 600;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		color: var(--fg-muted);
+		margin: 0 0 0.85rem;
+	}
+
+	.focus__list {
+		margin: 0;
+		padding-left: 1.15rem;
+		color: var(--fg);
+	}
+
+	.focus__list li {
+		margin-bottom: 0.45rem;
+		padding-left: 0.25rem;
+	}
+
+	.focus__list li:last-child {
+		margin-bottom: 0;
+	}
+
+	.contact {
+		margin-top: 0.25rem;
+		margin-bottom: 0;
+	}
+
+	.contact__link {
+		color: var(--fg);
+		font-weight: 500;
+		text-decoration: none;
+		border-bottom: 1px solid var(--fg);
+		padding-bottom: 0.1em;
+		transition:
+			opacity 0.15s ease,
+			border-color 0.15s ease;
+	}
+
+	.contact__link:hover {
+		opacity: 0.65;
+		border-color: transparent;
+	}
+</style>
