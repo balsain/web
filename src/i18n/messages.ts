@@ -1,8 +1,8 @@
 export type Locale = 'en' | 'es';
 
 export const almena = {
-	name: 'Almena',
-	url: 'https://almena.network/',
+	name: 'Almena ID',
+	url: 'https://github.com/almena-id',
 } as const;
 
 export const messages = {
