@@ -1,6 +1,7 @@
 ---
 import { getRelativeLocaleUrl } from 'astro:i18n';
 import LangSwitcher from '../components/LangSwitcher.astro';
+import Logo from '../components/Logo.astro';
 import { t } from '../i18n/messages';
 
 interface Props {
@@ -17,7 +18,9 @@ const homeHref = locale === 'es' ? getRelativeLocaleUrl('es', '') : getRelativeL
 <html lang={htmlLang}>
 	<head>
 		<meta charset="utf-8" />
+		<link rel="icon" href="/favicon.ico" sizes="48x48" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content={copy.meta.description} />
@@ -61,7 +64,10 @@ const homeHref = locale === 'es' ? getRelativeLocaleUrl('es', '') : getRelativeL
 	<body>
 		<div class="page">
 			<header class="masthead">
-				<a class="masthead__brand" href={homeHref}>{copy.brand}</a>
+				<a class="masthead__brand" href={homeHref}>
+					<Logo />
+					<span>{copy.brand}</span>
+				</a>
 				<LangSwitcher locale={locale} />
 			</header>
 
@@ -82,7 +88,7 @@ const homeHref = locale === 'es' ? getRelativeLocaleUrl('es', '') : getRelativeL
 
 	.masthead {
 		display: flex;
-		align-items: baseline;
+		align-items: center;
 		justify-content: space-between;
 		gap: 1rem;
 		padding-bottom: clamp(2rem, 8vh, 4.5rem);
@@ -91,6 +97,9 @@ const homeHref = locale === 'es' ? getRelativeLocaleUrl('es', '') : getRelativeL
 	}
 
 	.masthead__brand {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.6rem;
 		font-family: var(--font-serif);
 		font-size: 1.25rem;
 		font-weight: 500;
