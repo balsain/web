@@ -1,43 +1,42 @@
-# Astro Starter Kit: Minimal
+# balsain
+
+Public site for balsain, a product studio focused on cybersecurity, AI agents, and decentralised systems. The current product is [Almena ID](https://github.com/almena-id).
+
+Single-page static site, English only. Copy lives in `src/i18n/messages.ts`.
+
+## Stack
+
+- [Astro](https://astro.build) 7
+- [pnpm](https://pnpm.io)
+- Node.js 22.12 or newer
+- [Vercel Analytics](https://vercel.com/docs/analytics) on the home page
+
+## Setup
 
 ```sh
-npm create astro@latest -- --template minimal
+pnpm install
+pnpm dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+The dev server runs at `http://localhost:4321`.
 
-## 🚀 Project Structure
+| Command | Action |
+| :------ | :----- |
+| `pnpm dev` | Start the dev server |
+| `pnpm build` | Build the static site to `dist/` |
+| `pnpm preview` | Serve the production build locally |
 
-Inside of your Astro project, you'll see the following folders and files:
+The same commands are available through [Task](https://taskfile.dev): `task dev`, `task build`, `task preview`, `task clean`.
+
+## Layout
 
 ```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+src/
+├── components/   Home and logo
+├── i18n/         Page copy
+├── layouts/      Document shell
+└── pages/        Routes
+public/           Favicons
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Contact: info@balsain.io

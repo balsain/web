@@ -1,21 +1,10 @@
 ---
-import { getRelativeLocaleUrl } from 'astro:i18n';
-import LangSwitcher from '../components/LangSwitcher.astro';
 import Logo from '../components/Logo.astro';
-import { t } from '../i18n/messages';
-
-interface Props {
-	locale: string | undefined;
-}
-
-const { locale } = Astro.props;
-const copy = t(locale);
-const htmlLang = locale === 'es' ? 'es' : 'en';
-const homeHref = locale === 'es' ? getRelativeLocaleUrl('es', '') : getRelativeLocaleUrl('en', '');
+import { copy } from '../i18n/messages';
 ---
 
 <!doctype html>
-<html lang={htmlLang}>
+<html lang="en">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" href="/favicon.ico" sizes="48x48" />
@@ -64,11 +53,10 @@ const homeHref = locale === 'es' ? getRelativeLocaleUrl('es', '') : getRelativeL
 	<body>
 		<div class="page">
 			<header class="masthead">
-				<a class="masthead__brand" href={homeHref}>
+				<a class="masthead__brand" href="/">
 					<Logo />
 					<span>{copy.brand}</span>
 				</a>
-				<LangSwitcher locale={locale} />
 			</header>
 
 			<slot />

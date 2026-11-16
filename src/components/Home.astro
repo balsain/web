@@ -1,12 +1,5 @@
 ---
-import { almena, t } from '../i18n/messages';
-
-interface Props {
-	locale: string | undefined;
-}
-
-const { locale } = Astro.props;
-const copy = t(locale);
+import { almena, copy } from '../i18n/messages';
 ---
 
 <main id="main">
